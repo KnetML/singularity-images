@@ -11,6 +11,7 @@ From: ubuntu:latest
    export JULIA_PKGDIR=/workdir/.julia
    export XDG_RUNTIME_DIR="/workdir/notebooks"
    export JUPYTER_DATA_DIR=/workdir/.jupyter
+   export JUPYTER=/usr/local/bin/jupyter
 
 %runscript
 exec jupyter notebook --notebook-dir=/workdir/notebooks --ip='*' --port=8888 --no-browser
@@ -51,8 +52,9 @@ exec jupyter notebook --notebook-dir=/workdir/notebooks --ip='*' --port=8888 --n
     /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("ArgParse")'
     /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("PyCall")'
     /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("Images")'
+
+    export JUPYTER=/usr/local/bin/jupyter
     /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("IJulia")'
-    #/opt/julia-0.6.2-dev/bin/julia -e 'Pkg.build("IJulia")'
 
     rm -rf /workdir/.julia/.cache
     rm -rf /workdir/.julia/lib
