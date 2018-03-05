@@ -40,19 +40,19 @@ exec jupyter notebook --notebook-dir=/workdir/notebooks --ip='*' --port=8888 --n
     
     mkdir -p /opt/julia-0.6.2-dev && \
     curl -s -L https://julialang-s3.julialang.org/bin/linux/x64/0.6/julia-0.6.2-linux-x86_64.tar.gz | tar -C /opt/julia-0.6.2-dev -x -z --strip-components=1 -f -
-    ln -fs /opt/julia-0.6.2-dev /opt/julia-0.6
+    ln -fs /opt/julia-0.6.2-dev/bin/julia /usr/bin/julia
     
     export JULIA_PKGDIR=/workdir/.julia
     
-    /opt/julia-0.6/bin/julia -e 'Pkg.init()'
-    /opt/julia-0.6/bin/julia -e 'Pkg.add("CUDAapi")'
-    /opt/julia-0.6/bin/julia -e 'Pkg.add("Knet")'
-    /opt/julia-0.6/bin/julia -e 'Pkg.add("JLD")'
-    /opt/julia-0.6/bin/julia -e 'Pkg.add("ArgParse")'
-    /opt/julia-0.6/bin/julia -e 'Pkg.add("PyCall")'
-    /opt/julia-0.6/bin/julia -e 'Pkg.add("Images")'
-    /opt/julia-0.6/bin/julia -e 'Pkg.add("IJulia")'
-    /opt/julia-0.6/bin/julia -e 'Pkg.build("IJulia")'
+    /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.init()'
+    /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("CUDAapi")'
+    /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("Knet")'
+    /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("JLD")'
+    /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("ArgParse")'
+    /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("PyCall")'
+    /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("Images")'
+    /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("IJulia")'
+    #/opt/julia-0.6.2-dev/bin/julia -e 'Pkg.build("IJulia")'
 
     rm -rf /workdir/.julia/.cache
     rm -rf /workdir/.julia/lib
