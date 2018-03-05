@@ -10,6 +10,7 @@ From: ubuntu:latest
    export PATH=/opt/julia-0.6/bin:/usr/local/cuda/bin:$PATH
    export JULIA_PKGDIR=/workdir/.julia
    export XDG_RUNTIME_DIR="/workdir/notebooks"
+   export JUPYTER_DATA_DIR=/workdir/.jupyter
 
 %runscript
 exec jupyter notebook --notebook-dir=/workdir/notebooks --ip='*' --port=8888 --no-browser
@@ -44,6 +45,7 @@ exec jupyter notebook --notebook-dir=/workdir/notebooks --ip='*' --port=8888 --n
     export JULIA_PKGDIR=/workdir/.julia
     
     /opt/julia-0.6/bin/julia -e 'Pkg.init()'
+    /opt/julia-0.6/bin/julia -e 'Pkg.add("CUDAapi")'
     /opt/julia-0.6/bin/julia -e 'Pkg.add("Knet")'
     /opt/julia-0.6/bin/julia -e 'Pkg.add("JLD")'
     /opt/julia-0.6/bin/julia -e 'Pkg.add("ArgParse")'
