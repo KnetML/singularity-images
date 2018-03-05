@@ -55,6 +55,7 @@ exec jupyter notebook --notebook-dir=/workdir/notebooks --ip='*' --port=8888 --n
 
     export JUPYTER=/usr/local/bin/jupyter
     /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("IJulia")'
+    /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.build("IJulia")'
 
     rm -rf /workdir/.julia/.cache
     rm -rf /workdir/.julia/lib
