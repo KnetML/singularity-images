@@ -56,7 +56,6 @@ exec jupyter notebook --notebook-dir=/workdir/notebooks --ip='*' --port=8888 --n
     mkdir -p /workdir/notebooks
 
     chmod -R 777 /workdir
-    chmod -R 777 /run/user
 
     mkdir -p /opt/cudnn
     mkdir -p /usr/local/cuda
