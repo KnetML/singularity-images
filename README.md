@@ -9,8 +9,7 @@
 singularity pull --name knet.simg shub://KnetML/singularity-images:latest
 ```
 
-* This image is not complete due to the cuda requirements. You should create an overlay image 
-to complete the setup.
+* Not to loose your changes, you should create an overlay image.
 ```
 singularity image.create --size 2048 overlay.simg
 ```
@@ -19,7 +18,12 @@ singularity image.create --size 2048 overlay.simg
 singularity image.expand overlay.simg
 ```
 
-* Connect to the container with the overlay image. Don't forget to bind your cuda and cudnn paths.
+* Connect to the container with the overlay image.
+```
+singularity shell --overlay overlay.simg Knet.simg
+```
+
+* If you want to enable the gpu usage, you can bind your cuda and cudnn paths.
 ```
 singularity shell --bind <your cuda path>:/usr/local/cuda,<your cudnn path>:/opt/cudnn --overlay overlay.simg --nv Knet.simg
 ```
@@ -30,6 +34,12 @@ julia -e 'Pkg.build("Knet")'
 ```
 
 * Now you can work under the _/workdir_ folder
+
+### Running the image
+You can also run the image directly. It starts an ipython notebook server. You can connect to this server on localhost:8888.
+```
+singularity run --bind <your cuda path>:/usr/local/cuda,<your cudnn path>:/opt/cudnn --overlay overlay.simg --nv Knet.simg
+```
 
 ### Usage on the kuacc cluster
 
@@ -47,10 +57,10 @@ export SINGULARITY_CACHEDIR=/scratch/users/username
 
 * On a compute node with gpu
 ```
-singularity shell --bind /usr/local/cuda-9.0/:/usr/local/cuda,/kuacc/apps/cudnn/v7.0.4_CUDA_9.0:/opt/cudnn --overlay overlay.img --nv RG.simg
+singularity shell --bind /usr/local/cuda-9.0/:/usr/local/cuda,/kuacc/apps/cudnn/v7.0.4_CUDA_9.0:/opt/cudnn --overlay overlay.img --nv Knet.simg
 ```
 
 ### DEPENDENCIES
-* Singularity
+* [Singularity](singularity.lbl.gov)
 * Cuda drivers and libraries (optional)
 * Cudnn library (optinal)
