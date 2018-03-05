@@ -9,7 +9,7 @@ From: ubuntu:latest
    export LD_LIBRARY_PATH=/usr/lib:/usr/lib64:/usr/local/cuda/lib64:/usr/local/cuda/lib:/opt/cudnn/lib64:$LD_LIBRARY_PATH
    export PATH=/opt/julia-0.6/bin:/usr/local/cuda/bin:$PATH
    export JULIA_PKGDIR=/workdir/.julia
-   export XDG_RUNTIME_DIR=""
+   export XDG_RUNTIME_DIR="/workdir/notebooks"
 
 %runscript
 exec jupyter notebook --notebook-dir=/workdir/notebooks --ip='*' --port=8888 --no-browser
@@ -27,11 +27,13 @@ exec jupyter notebook --notebook-dir=/workdir/notebooks --ip='*' --port=8888 --n
     python-pip \
     git \
     vim \
+    emacs \
     libxml2 \
     wget \
     curl \
     unzip \
     cmake \
+    hdf5-tools \
 
     pip install jupyter
     
