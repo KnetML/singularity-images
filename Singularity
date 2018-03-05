@@ -10,8 +10,9 @@ From: ubuntu:latest
    export PATH=/opt/julia-0.6/bin:/usr/local/cuda/bin:$PATH
    export JULIA_PKGDIR=/workdir/.julia
    export XDG_RUNTIME_DIR="/workdir/notebooks"
-   export JUPYTER_DATA_DIR=/workdir/.jupyter
    export JUPYTER=/usr/local/bin/jupyter
+   export JUPYTER_PATH=/workdir/.jupyter
+   export JUPYTER_DATA_DIR=/workdir/.jupyter
 
 %runscript
 exec jupyter notebook --notebook-dir=/workdir/notebooks --ip='*' --port=8888 --no-browser
@@ -54,6 +55,9 @@ exec jupyter notebook --notebook-dir=/workdir/notebooks --ip='*' --port=8888 --n
     /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("Images")'
 
     export JUPYTER=/usr/local/bin/jupyter
+    export JUPYTER_PATH=/workdir/.jupyter
+    export JUPYTER_DATA_DIR=/workdir/.jupyter
+    
     /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.add("IJulia")'
     /opt/julia-0.6.2-dev/bin/julia -e 'Pkg.build("IJulia")'
 
